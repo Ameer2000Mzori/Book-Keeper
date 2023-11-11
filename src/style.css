@@ -137,6 +137,10 @@ body {
   }
 }
 
+.popUp-info-card.active {
+  display: flex;
+}
+
 .info-wrapper {
   display: flex;
   flex-direction: column;

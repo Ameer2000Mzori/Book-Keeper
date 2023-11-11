@@ -14,24 +14,13 @@
           <button class="add-btn">ADD BOOKMARK</button>
         </div>
         <div class="book-mark-list-wrapper">
-          <div class="book-marked">
-            <div class="remove-btn-wrapper">
-              <button class="remove-book-button">X</button>
-            </div>
-            <div class="text-img-wrap">
-              <img
-                class="marked-book-img"
-                src="https://www.svgrepo.com/show/303108/google-icon-logo.svg"
-                alt=""
-              />
-              <a href="#" class="a-book-text"> GOOGLEsdasdadasdasda</a>
-            </div>
+
           </div>
         </div>
       </div>
     </header>
 
-    <section class="popUp-info-card">
+    <section class="popUp-info-card" hidden>
       <div class="info-wrapper">
         <div class="title-button">
           <h1>ADD BOOK MARK</h1>
@@ -39,10 +28,11 @@
         </div>
         <div class="input-info-card-wrapper">
           <label for="">Wbsite Name</label>
-          <input type="text" />
+          <input class="inputName" type="text" />
           <label for="">Website URL</label>
-          <input type="text" />
+          <input class="inputUrl" type="text" />
           <div class="save-btn-wrapper">
+            <p class="errorMessage"></p>
             <button class="save-btn">SAVE</button>
           </div>
         </div>
