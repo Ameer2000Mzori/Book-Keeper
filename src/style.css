@@ -10,12 +10,13 @@
   --active-border-color: #c6bdd1;
   --active-color: rgb(176, 185, 197);
   --active-background-color: rgb(34, 33, 33);
+  --font-family-original: "Roboto", sans-serif;
 }
 
 body {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-family-original);
   overflow-x: hidden;
 }
 
@@ -132,6 +133,106 @@ body {
   }
 
   .add-btn {
+    width: 300px;
+  }
+}
+
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: fixed; /* Change to fixed to keep it centered even when scrolling */
+  justify-content: space-between;
+  height: 150px;
+  width: 500px;
+  left: 50%; /* Change to 50% to horizontally center */
+  top: 50%; /* Keep it at 50% to vertically center */
+  transform: translate(-50%, -50%); /* Adjust the transform property */
+  margin: 0;
+  padding: 0;
+}
+
+.title-button {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: rgb(184, 145, 241);
+  filter: drop-shadow(0 0 1rem rgb(71, 71, 71));
+  margin: 0;
+  top: 0;
+  border-radius: 5px 5px 0 0;
+}
+
+.input-info-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  background-color: aliceblue;
+  filter: drop-shadow(0 1rem 0.5rem rgb(71, 71, 71));
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+  gap: 5px;
+}
+
+input {
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--background-color);
+  font-family: var(--font-family-original);
+  padding: 5px;
+  font-weight: 600;
+}
+
+input:hover {
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #9373c4;
+}
+
+input:focus {
+  color: rgb(255, 255, 255);
+  background-color: #9373c4;
+}
+
+label {
+  font-family: var(--font-family-original);
+  font-weight: 600;
+}
+
+.save-btn {
+  font-family: var(--font-family-original);
+  font-weight: 500;
+  font-size: 15px;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #b995f0;
+  color: white;
+  background-color: #9373c4;
+}
+
+.save-btn:hover {
+  cursor: pointer;
+  border-color: #d0baf1;
+  color: rgb(212, 211, 211);
+  background-color: #7859a7;
+}
+
+.save-btn:active {
+  cursor: pointer;
+  border-color: #b6b4b8;
+  color: rgb(255, 255, 255);
+  background-color: #57545c;
+}
+
+@media screen and (max-width: 769px) {
+  .info-wrapper {
+    height: 250px;
     width: 300px;
   }
 }
