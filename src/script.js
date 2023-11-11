@@ -16,7 +16,6 @@ let bookObj = [
   {
     Name: "Google.com",
     Url: "google.com",
-    // image: "https://www.svgrepo.com/show/303108/google-icon-logo.svg",
   },
 ];
 console.log(bookObj);
@@ -39,7 +38,10 @@ function loadData(bookObj) {
   const markedBookImg = document.createElement("img");
   markedBookImg.classList = "marked-book-img";
   //   markedBookImg.src = bookObj.image;
-  markedBookImg.setAttribute("src", "");
+  markedBookImg.setAttribute(
+    "src",
+    `https://s2.googleusercontent.com/s2/favicons?domain=${bookObj.Url}`
+  );
   markedBookImg.alt = "img";
   textImgWrap.appendChild(markedBookImg);
 
