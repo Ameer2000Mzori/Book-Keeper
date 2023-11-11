@@ -12,14 +12,14 @@ const inputUrl = document.getElementsByClassName("inputUrl")[0];
 const saveBtnWrapper = document.getElementsByClassName("save-btn-wrapper");
 
 // our Obj
-var bookObj = [
+let bookObj = [
   {
     Name: "Google.com",
-    Url: "www.google.com",
+    Url: "google.com",
     // image: "https://www.svgrepo.com/show/303108/google-icon-logo.svg",
   },
 ];
-
+console.log(bookObj);
 //load data to our website
 function loadData(bookObj) {
   const BookMarked = document.createElement("div");
@@ -39,20 +39,36 @@ function loadData(bookObj) {
   const markedBookImg = document.createElement("img");
   markedBookImg.classList = "marked-book-img";
   //   markedBookImg.src = bookObj.image;
+  markedBookImg.setAttribute("src", "");
   markedBookImg.alt = "img";
   textImgWrap.appendChild(markedBookImg);
 
   const aBooktext = document.createElement("a");
   aBooktext.classList = "a-book-text";
   aBooktext.textContent = bookObj.Name;
-  aBooktext.href = bookObj.Url;
+  aBooktext.setAttribute("href", `https://${bookObj.Url}`);
+  aBooktext.setAttribute("target", "_blank");
   textImgWrap.appendChild(aBooktext);
 
   BookMarked.appendChild(removeBtnWrapper);
   BookMarked.appendChild(textImgWrap);
 
   bookMarkListWrapper.appendChild(BookMarked);
+
+  removeBookButton.addEventListener("click", (e) => {
+    const bookName =
+      e.target.parentNode.nextElementSibling.lastElementChild.textContent;
+    removeBook(bookName);
+    console.log(bookName);
+  });
 }
+function removeBook(bookName) {
+  bookObj = bookObj.filter((book) => book.Name !== bookName);
+  localStorage.setItem("bookObj", JSON.stringify(bookObj));
+  bookMarkListWrapper.innerHTML = "";
+  bookObj.forEach(loadData);
+}
+// deleteing our data from object
 
 // our functions
 function popUpHandler() {
@@ -75,9 +91,7 @@ function saveNewBook() {
   let urlVal = inputUrl.value;
 
   if (nameVal && urlVal) {
-    console.log("good job");
     errorMessage.textContent = "";
-
     newObj = {
       Name: nameVal,
       Url: urlVal,
@@ -87,29 +101,23 @@ function saveNewBook() {
 
     bookObj.forEach(loadData);
     localStorage.setItem("bookObj", JSON.stringify(bookObj));
+    closePopUpHandler();
   } else {
     errorMessage.textContent = "please enter something";
   }
 }
+
+//on load
+
+function onLoad() {
+  const savedLocalData = localStorage.getItem("bookObj");
+  bookObj = savedLocalData ? JSON.parse(savedLocalData) : [];
+}
+
+onLoad();
 
 //our add eventlisnters
 addNewBookBtn.addEventListener("click", popUpHandler);
 closeInfoCard.addEventListener("click", closePopUpHandler);
 saveBtn.addEventListener("click", saveNewBook);
 bookObj.forEach(loadData);
-
-/*
- <div class="book-marked">
-   <div class="remove-btn-wrapper">
-     <button class="remove-book-button">X</button>
-   </div>
-   <div class="text-img-wrap">
-     <img
-       class="marked-book-img"
-       src="https://www.svgrepo.com/show/303108/google-icon-logo.svg"
-       alt=""
-     />
-     <a href="#" class="a-book-text"> GOOGLEsdasdadasdasda</a>
-   </div>
-
-*/
